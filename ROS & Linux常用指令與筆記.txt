@@ -1,0 +1,91 @@
+Ubuntu common commands
+sudo apt-get update
+sudo apt-get -y dist-upgrade
+sudo apt-get clean
+
+ROS common commands
+cd ~/catkin_ws
+catkin_make
+source ~/catkin_ws/devel/setup.bash
+
+sudo apt install ros-melodic-
+
+rostopic list
+rostopic type human_pose
+rostopic echo human_pose
+rostopic hz human_pose
+
+rosmsg show geometry_msgs/Twist
+直接用指令publish :
+rostopic pub -1 [topic] [msg_type] [args]
+連接型打法 :
+rostopic type /turtle1/cmd_vel | rosmsg show
+rosservice type /spawn | rossrv show
+
+roslaunch path_planning planning.launch
+
+繪圖指令 :
+rqt_plot displays a scrolling time plot of the data published on topics.
+
+Bag指令 :
+time rosbag info 2020-07-14-09-33-26.bag
+rostopic echo /laser_track_point
+time rosbag play --immediate 2020-07-14-09-33-26.bag --topics /laser_track_point
+time rosbag play --pause 2020-07-14-09-33-26.bag --topics /laser_track_point
+time rosbag play --clock --pause -l 2020-07-17-15-42-09.bag --topics laser_track_point human_pose
+time rosbag play --clock --pause -l 2020-07-21-16-55-46.bag --topics /laser_track_point /human_pose /camera/color/image_raw /camera/depth/color/points /camera/aligned_depth_to_color/image_raw
+time rosbag play --clock --pause -l 2020-07-21-16-55-46.bag --topics /laser_track_point /human_pose /camera/color/image_raw /camera/depth/color/points /camera/aligned_depth_to_color/image_raw
+time rosbag play --clock --pause -l 2020-07-30-15-03-51.bag --topics /laser_track_point /human_pose /camera/color/image_raw /camera/depth/color/points 
+time rosbag play --clock --pause -l 2020-08-05-14-30-26.bag --topics /laser_track_point /human_pose /debug_image2 /debug_image_YJYJ 
+time rosbag play --clock --pause -l output.bag --topics /laser_track_point /human_pose /debug_image2 /debug_image_YJYJ 
+time rosbag play --clock --pause -l output_disappear.bag --topics /laser_track_point /human_pose /debug_image2 /debug_image_YJYJ 
+time rosbag play --clock --pause -l 2020-08-17-09-28-47.bag --topics /laser_track_point /human_pose /debug_image2 /debug_image_YJYJ
+time rosbag play --clock --pause -l 2020-08-24-15-38-34.bag --topics /laser_track_point /human_pose /debug_image2 /debug_image_YJYJ
+time rosbag play --clock --pause -l 2020-08-24-15-38-34.bag --topics /laser_track_point /human_pose /debug_image2 /debug_image_YJYJ /camera/color/image_raw
+
+play rosbag的時候加上參數 "--clock"
+
+rosbag play --clock --hz=2 2020-07-14-09-33-26.bag --topics /laser_track_point
+
+rosclean
+rosclean check
+rosclean purge
+
+RVIZ :
+rosrun rviz rviz
+rosrun rviz rviz -d `rospack find path_planning`/src/planning_visualization.rviz
+rosrun rviz rviz -d `rospack find rbx1_nav`/sim.rviz
+
+Git :
+git init
+git remote add origin git@test.ipickup.com.tw:2020_summer_vacation_group/auto-follow-vehicle.git
+git add . --all
+git commit -m "first commit"
+git push -u origin master
+
+git remote -v
+git remote rm origin
+
+ssh-keygen
+
+
+Fuzzy 
+
+export LD_LIBRARY_PATH="/home/kevinlee/fuzzylite-6.0/fuzzylite/release/bin/:$LD_LIBRARY_PATH"
+
+g++ ObstacleAvoidance.cpp -o ObstacleAvoidance -I/home/kevinlee/fuzzylite-6.0/fuzzylite -L/home/kevinlee/fuzzylite-6.0/fuzzylite/release/bin -lfuzzylite -Wno-non-literal-null-conversion
+
+
+ANDROID_SDK_TOOLS_VERSION
+~/.local/share/python-for-android/build/other_builds/opencv/arm64-v8a__ndk_target_21/opencv
+
+編譯轉apk
+p4a apk --private ./     --requirements=python3,kivy,opencv,libffi     --bootstrap=sdl2     --arch=arm64-v8a     --pakage=example.hello --name="HelloKivy"     --dist_name=testHelloKivy     --ndk_dir=$ANDROIDNDK --sdk_dir=$ANDROIDSDK  --release
+
+
+apt install openjdk-8-jdk
+sudo update-alternatives --config java
+
+p4a apk --private ./     --requirements=python3,kivy  --version 0.1   --bootstrap=sdl2     --arch=arm64-v8a     --package=org.test.main --name "main.py"    --dist_name=testHelloKivy     --ndk_dir=$ANDROIDNDK --sdk_dir=$ANDROIDSDK  --release
+
+p4a clean_builds && p4a clean_dists
