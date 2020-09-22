@@ -1,0 +1,2 @@
+path_planning:rbx1/rbx1:rbx1/rbx1_apps:rbx1/rbx1_bringup:rbx1/rbx1_description:rbx1/rbx1_dynamixels:rbx1/rbx1_nav:rbx1/rbx1_speech:rbx1/rbx1_vision
+-DCATKIN_DEVEL_PREFIX=/home/hungtselee/robot_ws/devel -DCMAKE_INSTALL_PREFIX=/home/hungtselee/robot_ws/install -G Unix Makefiles

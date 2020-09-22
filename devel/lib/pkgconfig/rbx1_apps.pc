@@ -1,0 +1,8 @@
+prefix=/home/hungtselee/robot_ws/devel
+
+Name: rbx1_apps
+Description: Description of rbx1_apps
+Version: 0.4.0
+Cflags: 
+Libs: -L/home/hungtselee/robot_ws/devel/lib 
+Requires: 

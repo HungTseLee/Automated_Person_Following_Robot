@@ -1,0 +1,8 @@
+prefix=/home/hungtselee/robot_ws/install
+
+Name: path_planning
+Description: Description of path_planning
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/hungtselee/robot_ws/install/lib 
+Requires: 
